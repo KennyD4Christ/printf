@@ -1,6 +1,6 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdarg.h>
+#include <unistd.h>
 
 /**
  *  * _printf - Custom printf function with limited functionality.
@@ -14,33 +14,35 @@ int _printf(const char *format, ...)
 va_list args;
 int count = 0;
 va_start(args, format);
-while (*format != '\0')
+while (format && format[count])
 {
-if (*format == '%' && *(format + 1) != '\0')
+if (format[count] == '%' && format[count + 1] != '\0')
 {
-format++;
-switch (*format)
+switch (format[count + 1])
 {
 case 'c':
-count += (putchar(va_arg(args, int)));
-break;
-case 's':
-count += (puts(va_arg(args, char *)));
-break;
-case '%':
-count += (putchar('%'));
-break;
-default:
-count += (putchar('%'));
-count += (putchar(*format));
+{
+char c = (char)va_arg(args, int);
+write(1, &c, 1);
 break;
 }
+case 's':
+write(1, va_arg(args, char *), 1);
+break;
+case '%':
+write(1, "%", 1);
+break;
+default:
+write(1, "%", 1);
+break;
+}
+count += 2;
 }
 else
 {
-count += (putchar(*format));
+write(1, &format[count], 1);
+count++;
 }
-format++;
 }
 va_end(args);
 return (count);
