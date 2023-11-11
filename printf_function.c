@@ -1,44 +1,46 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdarg.h>
-#include <unistd.h>
 
 /**
- *  * _printf - Custom printf function
- *   * @format: Format string with directives
+ *  * _printf - Custom printf function with limited functionality.
+ *   * @format: Format string containing directives.
  *    *
- *     * Return: Number of characters printed (excluding null byte)
+ *     * Return: (count) - The number of characters printed
+ *     (excluding the null byte used to end output to strings).
  */
 int _printf(const char *format, ...)
 {
 va_list args;
 int count = 0;
 va_start(args, format);
-while (format && format[count])
+while (*format != '\0')
 {
-if (format[count] == '%' && format[count + 1])
+if (*format == '%' && *(format + 1) != '\0')
 {
-switch (format[count + 1])
+format++;
+switch (*format)
 {
 case 'c':
-count += _putchar(va_arg(args, int));
+count += (putchar(va_arg(args, int)));
 break;
 case 's':
-count += _puts(va_arg(args, char *));
+count += (puts(va_arg(args, char *)));
 break;
 case '%':
-count += _putchar('%');
+count += (putchar('%'));
 break;
 default:
-_putchar(format[count]);
-_putchar(format[count + 1]);
-count += 2;
-continue;
+count += (putchar('%'));
+count += (putchar(*format));
+break;
 }
-count += 2;
-continue;
 }
-_putchar(format[count]);
-count++;
+else
+{
+count += (putchar(*format));
+}
+format++;
 }
 va_end(args);
 return (count);
