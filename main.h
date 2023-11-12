@@ -3,11 +3,11 @@
 
 #include <stdarg.h>
 
+#define BUFF_SIZE 1024
+
 /* Function prototypes */
 int _printf(const char *format, ...);
-int _putchar(char c);
-int _puts(char *str);
-int _putint(int n);
 
 #endif /* MAIN_H */
+
 
