@@ -64,7 +64,9 @@ if (str == NULL)
 str = "(null)";
 while (*str)
 {
-count += _putchar(*str);
+if (_putchar(*str) == -1)
+return (-1);
+count++;
 str++;
 }
 return (count);
