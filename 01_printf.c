@@ -49,36 +49,6 @@ va_end(args);
 return (count);
 }
 /**
- *  * _putchar - Custom putchar function
- *   * @c: Character to print
- *    *
- *     * Return: 1 on success, -1 on error
- */
-int _putchar(int c)
-{
-return (write(1, &c, 1));
-}
-/**
- *  * _puts - Custom puts function
- *   * @str: String to print
- *    *
- *     * Return: Number of characters printed (excluding null byte)
- */
-int _puts(char *str)
-{
-int count = 0;
-if (str == NULL)
-str = "(null)";
-while (*str)
-{
-if (_putchar(*str) == -1)
-return (-1);
-count++;
-str++;
-}
-return (count);
-}
-/**
  *  * _print_int - Custom function to print integers
  *   * @n: Integer to print
  *    *
