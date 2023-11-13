@@ -30,7 +30,7 @@ case '%':
 count += _putchar('%');
 break;
 default:
-count += _putchar(*format);
+count += _putchar('%') + _putchar(*format);
 break;
 }
 }
@@ -61,7 +61,7 @@ int _puts(char *str)
 {
 int count = 0;
 if (str == NULL)
-return (_puts("(null)"));
+str = "(null)";
 while (*str)
 {
 if (_putchar(*str) == -1)
