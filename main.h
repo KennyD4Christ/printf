@@ -8,6 +8,7 @@
 int _printf(const char *format, ...);
 int _putchar(int c);
 int _puts(char *str);
+int write_int(int n);
 
 #endif /* MAIN_H */
 
