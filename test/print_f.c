@@ -11,12 +11,12 @@ int _printf(const char *format, ...)
 {
 	int strlen;
 	va_list args;
-	
+
 	strlen = 0;
 	va_start(args, format);
-	while(*format)
+	while (*format)
 	{
-		if(*format != '%')
+		if (*format != '%')
 		{
 			_putchar(*format);
 			strlen++;
@@ -42,7 +42,7 @@ int _printf(const char *format, ...)
 					str++;
 					strlen++;
 				}
-			
+
 			}
 
 			if (*format == '%')
@@ -51,11 +51,11 @@ int _printf(const char *format, ...)
 				strlen++;
 			}
 
-			
+
 		}
 		format++;
 
-		
+
 	}
 
 	return (strlen);
