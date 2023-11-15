@@ -28,6 +28,4 @@ int print_str_non_printable(char *buffer, char *str);
 int print_rev(char *buffer, char *str);
 int print_rot13(char *buffer, char *str);
 int print_pointer(char *buffer, void *ptr);
-
 #endif /* MAIN_H */
-
