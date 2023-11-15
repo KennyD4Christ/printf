@@ -116,6 +116,10 @@ break;
 case 'p':count += print_pointer(buffer + count, va_arg(args, void *));
 break;
 default:
+case 'r':
+str = va_arg(args, char *);
+count += print_rev(buffer + count, str);
+break;
 buffer[count++] = '%';
 for (j = 0; j < length_modifier; j++)
 buffer[count++] = format[i - length_modifier - 1 + j];

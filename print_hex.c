@@ -9,9 +9,11 @@
  *       * @precision: Precision for the number of digits to be printed
  *        * @zero_flag: Flag indicating if zero-padding should be used
  *@hash_flag: Flag indicating if the hex prefix '0x' or '0X' should be used
+ * @minus_flag: Flag indicating if the '-' flag is set
  *          * Return: Number of characters printed
  */
-int print_hex(char *buffer, unsigned int n, int is_upper, int width, int precision, int zero_flag, int hash_flag, int minus_flag)
+int print_hex(char *buffer, unsigned int n, int is_upper, int width,
+int precision, int zero_flag, int hash_flag, int minus_flag)
 {
 char hex_chars[] = "0123456789abcdef";
 int hex_len = 0;
